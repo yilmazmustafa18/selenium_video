@@ -2,14 +2,30 @@ package tests.K04_WebDriverOlusturmaVeKullanma.D01_WebDriverOlusturma_GetveNavig
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.time.Duration;
 
 public class C02_DriverGetMethodlari {
 
     public static void main(String[] args) throws InterruptedException {
 
+        ChromeOptions options = new ChromeOptions();
 
-        WebDriver driver = new ChromeDriver();
+// Kurumsal sertifika ve SSL hatalarını yok sayar
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--allow-running-insecure-content");
+
+// CDP / WebSocket bağlantı hatalarını minimize etmek için
+        options.addArguments("--remote-allow-origins=*");
+
+// Tarayıcıyı bu seçeneklerle başlatın
+        WebDriver driver = new ChromeDriver(options);
+
+
         driver.get("https://www.testotomasyonu.com");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
 
         System.out.println(driver.getTitle()); // Test Otomasyonu - Test Otomasyonu
