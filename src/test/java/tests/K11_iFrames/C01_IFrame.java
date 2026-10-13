@@ -18,7 +18,7 @@ public class C01_IFrame extends TestBase_Each {
 
         //2) This is a sample page yazisinin gorunur oldugunu test edin
 
-        WebElement hedefIFrameElementi = driver.findElement(By.id("frame1"));
+        WebElement hedefIFrameElementi = driver.findElement(By.xpath("//iframe[@id='frame1']"));
         driver.switchTo().frame(hedefIFrameElementi);
 
             /*
@@ -29,6 +29,7 @@ public class C01_IFrame extends TestBase_Each {
                  once o iframe'e gecis yapmamiz gerekir
              */
         WebElement yaziElementi = driver.findElement(By.xpath("(//h1[@id='sampleHeading'])[1]"));
+        //(//h1[@id='sampleHeading'])[1]
 
         Assertions.assertTrue(yaziElementi.isDisplayed());
 
@@ -51,7 +52,7 @@ public class C01_IFrame extends TestBase_Each {
         //driver.switchTo().defaultContent();
         driver.switchTo().parentFrame();
 
-        WebElement toolsQaLogo = driver.findElement(By.xpath("//*[@src='/images/Toolsqa.jpg']"));
+        WebElement toolsQaLogo = driver.findElement(By.xpath("//*[@src='/assets/Toolsqa-DZdwt2ul.jpg']"));
         Assertions.assertTrue(toolsQaLogo.isDisplayed());
 
         //4) sayfadaki iframe sayısını yazdirin.

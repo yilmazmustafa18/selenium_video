@@ -19,56 +19,27 @@ public class C02_IFrame extends TestBase_Each {
     @Test
     public void test01(){
 
-        //1- https://testotomasyonu.com/discount adresine gidin
         driver.get("https://testotomasyonu.com/discount");
 
-        //2- Elektronics Products yazisinin gorunur olduğunu test edin
-        WebElement electronicsIFrame = driver.findElement(By.xpath("(//iframe)[1]"));
-        driver.switchTo().frame(electronicsIFrame);
+        WebElement frame= driver.findElement(By.xpath("//iframe[@src='https://testotomasyonu.com/disproduct']"));
+        driver.switchTo().frame(frame);
 
-        WebElement electronicsProducts = driver.findElement(By.xpath("//*[.='Electronics Products']"));
+        Assertions.assertTrue(driver.findElement(By.xpath("//h2[text()='Electronics Products']")).isDisplayed());
 
-        Assertions.assertTrue(electronicsProducts.isDisplayed());
+        String actualLabel=driver.findElement(By.xpath("//img[@id='pic1_thumb']/../span")).getText();
+        String expectedLabel="DELL Core I3 11th Gen";
 
+        Assertions.assertEquals(expectedLabel,actualLabel);
 
-        //3- Dell bilgisayar urun isminin ‘DELL Core I3 11th Gen’ olduğunu test edin
-        String expectedUrunIsmi = "DELL Core I3 11th Gen";
-        String actualUrunIsmi = driver.findElement(By.id("pictext1"))
-                                        .getText();
+        driver.switchTo().defaultContent();
 
-        Assertions.assertEquals(expectedUrunIsmi,actualUrunIsmi);
+        Assertions.assertTrue(driver.findElement(By.xpath("//h2[.='Sale Up To 50%']")).isDisplayed());
 
-        //4- Sale Up To 50% yazisinin gorunur oldugunu test edin
-        //   bu yazi anasayfada oldugu icin
-        //   once electronics iframe'inden anasayfaya gecis yapmaliyiz
-        driver.switchTo().parentFrame();
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@src='https://testotomasyonu.com/disproduct2']")));
 
-        WebElement baslikElementi = driver.findElement(By.tagName("h2"));
-        String expectedBaslikYazisi = "Sale Up To 50%";
-        String actualBaslikYazisi = baslikElementi.getText();
+        Assertions.assertTrue( driver.findElement(By.xpath("//img[@id='pic1_thumb']/../p")).getText().contains("Men Slim Fit"));
 
-        Assertions.assertEquals(expectedBaslikYazisi,actualBaslikYazisi);
-
-        // 5- Fashion bolumundeki ilk urun ismini locate edin
-        //    fashion bolumu ayri bir IFrame icerisinde oldugundan , once o iFrame'e gecis yapmaliyiz
-
-        WebElement fashionIFrame = driver.findElement(By.xpath("(//iframe)[2]"));
-
-        driver.switchTo().frame(fashionIFrame);
-
-        // simdi ilk urun ismini locate edin
-        WebElement ilkUrunIsimElementi = driver.findElement(By.xpath("(//p)[1]"));
-
-
-        // ve ilk urun isminde "Men Slim Fit" gectigini test edin
-
-        String expectedIsimIcerigi = "Men Slim Fit";
-        actualUrunIsmi = ilkUrunIsimElementi.getText();
-
-        Assertions.assertTrue(actualUrunIsmi.contains(expectedIsimIcerigi));
-
-
-
+        ////img[@id='pic1_thumb']/../p
 
     }
 }
