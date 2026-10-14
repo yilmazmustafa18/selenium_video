@@ -11,7 +11,7 @@ public class C01_FakerClassKullanimi {
 
         Faker faker = new Faker();
 
-        System.out.println(faker.lordOfTheRings().character()); // Shelob
+        System.out.println(faker.aviation().airport()); // Shelob
 
         System.out.println(faker.name().firstName()); // Vena
         System.out.println(faker.name().name()); // Emmanuel Ebert DDS

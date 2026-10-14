@@ -27,6 +27,8 @@ public class C01_FileExistTesti {
             dosyanin dosyayolunu bilmeliyiz
          */
         String dosyaYoluDeneme = "src/test/java/tests/K15_fileTestleri/deneme.txt";
+        System.out.println(Paths.get(dosyaYoluDeneme));
+
 
         System.out.println(Files.exists(Paths.get(dosyaYoluDeneme))); // true
 
