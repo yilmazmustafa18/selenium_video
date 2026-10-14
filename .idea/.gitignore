@@ -1,3 +1,21 @@
-# Default ignored files
-/shelf/
-/workspace.xml
+# IntelliJ IDEA ve Eclipse dosyaları
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Maven derleme klasörü (Asla GitHub'a gitmemeli)
+target/
+
+# Selenium test koşturma çıktıları ve raporlar
+test-output/
+build/
+allure-results/
+allure-report/
+extent-reports/
+*.log
+
+# Otomatik indirilen driver'lar (Gerekirse)
+drivers/
+*.exe

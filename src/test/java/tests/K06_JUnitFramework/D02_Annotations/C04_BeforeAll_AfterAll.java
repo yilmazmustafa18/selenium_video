@@ -12,7 +12,7 @@ import utilities.ReusableMethods;
 import java.time.Duration;
 import java.util.List;
 
-public class C04_BeforeAll_AfterAll {
+public class  C04_BeforeAll_AfterAll {
 
     // 3 farkli test method'u olusturarak asagidaki testleri gerceklestirin
     // 1- Test otomasyonu anasayfaya gidin

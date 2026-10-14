@@ -18,26 +18,23 @@ public class C01_Actions_ContextClick extends TestBase_Each {
         driver.get("https://testotomasyonu.com/click");
 
         //2- “DGI Drones” uzerinde sag click yapin
-        WebElement dgiDronesElementi = driver.findElement(By.id("hot-spot"));
+       WebElement  dgi= driver.findElement(By.xpath("//img[@id='pic2_thumb']"));
+       ReusableMethods.bekle(1);
 
-        Actions actions = new Actions(driver);
-        ReusableMethods.bekle(1);
+       Actions act= new Actions(driver);
 
-        actions.contextClick(dgiDronesElementi)
-                .perform();
+       act.contextClick(dgi);
+
+
 
         //3- Alert’te cikan yazinin “Tebrikler!... Sağ click yaptınız.” oldugunu test edin.
-        String expectedYazi = "Tebrikler!... Sağ click yaptınız.";
-        String actualYazi = driver.switchTo()
-                                    .alert()
-                                    .getText();
+        String expVal="Tebrikler!... Sağ click yaptınız.";
+        Assertions.assertEquals(expVal, driver.switchTo().alert().getText());
 
-        Assertions.assertEquals(expectedYazi,actualYazi);
+        driver.switchTo().alert().accept();
 
         //4- Tamam diyerek alert’i kapatin
-        driver.switchTo()
-                .alert()
-                .accept();
+
 
 
 

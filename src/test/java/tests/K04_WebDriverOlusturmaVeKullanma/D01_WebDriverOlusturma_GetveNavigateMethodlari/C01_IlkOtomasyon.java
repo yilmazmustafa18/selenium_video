@@ -80,7 +80,7 @@ public class C01_IlkOtomasyon {
 
         String productNumberStr=driver.findElement(By.xpath("//span[contains (text(),'Products Found')]")).getText();
         String dummy= productNumberStr.replaceAll("\\D","");
-        ////a[@class='prod-title mb-3 ']
+
 
 
 
