@@ -49,6 +49,5 @@ public class C04_FileUploadTesti  extends TestBase_Each {
 
         Assertions.assertEquals(expectedYazi,actualYazi);
 
-
     }
 }
