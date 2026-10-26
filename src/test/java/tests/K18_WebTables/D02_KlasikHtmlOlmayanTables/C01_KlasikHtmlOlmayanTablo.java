@@ -6,7 +6,10 @@ import org.openqa.selenium.WebElement;
 import utilities.ReusableMethods;
 import utilities.TestBase_Each;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class C01_KlasikHtmlOlmayanTablo extends TestBase_Each {
 
@@ -18,15 +21,17 @@ public class C01_KlasikHtmlOlmayanTablo extends TestBase_Each {
         driver.get("https://testotomasyonu.com/webtables2");
 
         //  2. Headers da bulunan basliklari yazdirin
-        List<WebElement> baslikElementleriList = driver.findElements(By.xpath("//*[@role='hrow']/*[@role='hdata']"));
-
+        //List<WebElement> baslikElementleriList = driver.findElements(By.xpath("//*[@role='hrow']/*[@role='hdata']"));
+        List<WebElement> baslikElementleriList=driver.findElements(By.xpath("//div[@class='table-tr bg-light']/div[@class='table-td fw-bold']"));
         System.out.println("Basliklar : " + ReusableMethods.stringListeDondur(baslikElementleriList));
 
-        //  3. 3.sutunun basligini yazdirin
-        System.out.println("3.sutun basligi : " + baslikElementleriList.get(2).getText());
+        //  3. istenilen sutunun basligini yazdirin
+        System.out.println("3.sutun basligi : " + getColumnHeader(3) );
 
+        getPricesInCategory("Electronics");
+/*
         //  4. Tablodaki tum datalari yazdirin
-        List<WebElement> tumDataListesi = driver.findElements(By.xpath("//*[@role='trow']/*[@role='tdata']"));
+        List<WebElement> tumDataListesi = driver.findElements(By.xpath("//div[@class='table-td' and @role='tdata']"));
         System.out.println("Tablodaki tum datalar : " +
                             ReusableMethods.stringListeDondur(tumDataListesi));
 
@@ -78,7 +83,7 @@ public class C01_KlasikHtmlOlmayanTablo extends TestBase_Each {
 
         }
 
-
+*/
     }
 
     public String getCellData(int satirNo , int sutunNo){
@@ -89,6 +94,39 @@ public class C01_KlasikHtmlOlmayanTablo extends TestBase_Each {
         WebElement istenenDataElementi = driver.findElement(By.xpath(dinamikXpath));
 
         return istenenDataElementi.getText();
+
+    }
+
+    public String getColumnHeader(int orderNo){
+        String dynXPath="//div[@class='table-tr bg-light']/div[@class='table-td fw-bold']["+orderNo+ "]";
+        WebElement colHeader=driver.findElement(By.xpath(dynXPath));
+        return colHeader.getText();
+    }
+
+    public void  getPricesInCategory(String  category){
+        List<String> prices= new ArrayList<>();
+        String dynXPath="//div[@role='trow']/div[@role='tdata'][1]";
+        String dynXPath1="//div[@role='trow']/div[@role='tdata'][2]";
+        String dynXPath2="//div[@role='trow']/div[@role='tdata'][3]";
+
+
+        List<WebElement> prod =driver.findElements(By.xpath(dynXPath));
+        List<WebElement> cat =driver.findElements(By.xpath(dynXPath1));
+        List<WebElement> prodPrices =driver.findElements(By.xpath(dynXPath2));
+
+        Map<String,String> prodPrice=new HashMap<>();
+
+
+        for (int i = 0; i < cat.size(); i++) {
+            if(cat.get(i).getText().equalsIgnoreCase(category)){
+                System.out.print(prodPrices.get(i).getText()+"--"+cat.get(i).getText()+"--"+prod.get(i).getText()+"\n");
+            }
+            prodPrice.put(prod.get(i).getText(),prodPrices.get(i).getText());
+
+        }
+
+        System.out.println(prodPrice);
+
 
     }
 
