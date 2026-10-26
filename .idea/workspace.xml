@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="804dfa0b-7cb1-40ed-8d1c-dd6d05f2e075" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/K14_fakerClass/C01_FakerClassKullanimi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/K14_fakerClass/C01_FakerClassKullanimi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tests/K15_fileTestleri/C01_FileExistTesti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tests/K15_fileTestleri/C01_FileExistTesti.java" afterDir="false" />
-    </list>
+    <list default="true" id="804dfa0b-7cb1-40ed-8d1c-dd6d05f2e075" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +41,7 @@
     "JUnit.C01_FakerClassKullanimi.test01.executor": "Run",
     "JUnit.C01_FileExistTesti.test01.executor": "Run",
     "JUnit.C01_IFrame.test01.executor": "Run",
+    "JUnit.C01_KlasikHtmlOlmayanTablo.test01.executor": "Run",
     "JUnit.C02_AssertionsMethodlari.test01.executor": "Run",
     "JUnit.C02_IFrame.executor": "Run",
     "JUnit.C02_IFrame.test01.executor": "Run",
@@ -62,7 +59,7 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.C01_FileExistTesti.test01">
+  <component name="RunManager" selected="JUnit.C01_KlasikHtmlOlmayanTablo.test01">
     <configuration name="C01_FakerClassKullanimi.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wise_SeleniumVideoDersleri_JUnit" />
       <extension name="coverage">
@@ -95,16 +92,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="C01_IFrame.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="C01_KlasikHtmlOlmayanTablo.test01" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wise_SeleniumVideoDersleri_JUnit" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tests.K11_iFrames.*" />
+          <option name="PATTERN" value="tests.K18_WebTables.D02_KlasikHtmlOlmayanTables.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tests.K11_iFrames" />
-      <option name="MAIN_CLASS_NAME" value="tests.K11_iFrames.C01_IFrame" />
+      <option name="PACKAGE_NAME" value="tests.K18_WebTables.D02_KlasikHtmlOlmayanTables" />
+      <option name="MAIN_CLASS_NAME" value="tests.K18_WebTables.D02_KlasikHtmlOlmayanTables.C01_KlasikHtmlOlmayanTablo" />
       <option name="METHOD_NAME" value="test01" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -144,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.C01_KlasikHtmlOlmayanTablo.test01" />
         <item itemvalue="JUnit.C01_FileExistTesti.test01" />
         <item itemvalue="JUnit.C01_FakerClassKullanimi.test01" />
         <item itemvalue="JUnit.C02_IFrame" />
         <item itemvalue="JUnit.C02_IFrame.test01" />
-        <item itemvalue="JUnit.C01_IFrame.test01" />
       </list>
     </recent_temporary>
   </component>
