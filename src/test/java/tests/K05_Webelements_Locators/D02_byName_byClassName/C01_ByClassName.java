@@ -24,7 +24,7 @@ public class C01_ByClassName {
         WebElement aramaKutusu = driver.findElement(By.className("search-input"));
 
         //4- arama kutusuna “shoe” yazdirin
-        aramaKutusu.sendKeys("shoe");
+        aramaKutusu.sendKeys( "shoe");
 
         //5- arama islemini yapabilmek icin ENTER tusuna basin
         aramaKutusu.submit();

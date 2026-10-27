@@ -1,8 +1,6 @@
 package tests.K19_ExcelOtomasyon.D02_Read_WriteExcel;
 
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileInputStream;
@@ -20,6 +18,20 @@ public class C02_WriteExcel {
         FileInputStream fileInputStream = new FileInputStream(excelDosyaYolu);
         Workbook workbook = WorkbookFactory.create(fileInputStream);
         Sheet sayfa1 = workbook.getSheet("Sayfa1");
+        workbook.createSheet("Sayfa3");
+        Sheet sayfa3=workbook.getSheet("Sayfa3");
+        sayfa3.createRow(0);
+        Row row0= sayfa3.getRow(0);
+        row0.createCell(0);
+        Cell cell0=row0.getCell(0);
+
+        cell0.setCellValue("Fenerbahçe");
+
+
+        row0.createCell(1).setCellValue("Kadıköy");
+
+
+
 
 
         //4) 1.satir 5.hucreye yeni bir cell olusturalim

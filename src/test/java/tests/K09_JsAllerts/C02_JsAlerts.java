@@ -1,12 +1,13 @@
 package tests.K09_JsAllerts;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import utilities.ReusableMethods;
 import utilities.TestBase_Each;
 
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class C02_JsAlerts extends TestBase_Each {
 
     //3 test method'u olusturup asagidaki gorevi tamamlayin
@@ -30,14 +31,19 @@ public class C02_JsAlerts extends TestBase_Each {
         oncelikle jsAlert evrenine switch yapmasi gerekir
      */
 
-    @Test
+    @Test @Order(1)
     public void jsAlertsTest(){
         //1. Test
         //	-  https://testotomasyonu.com/javascriptAlert adresine gidin
         driver.get("https://testotomasyonu.com/javascriptAlert");
+        WebElement btn1=driver.findElement(By.xpath("//button[contains(text(),'JS Alert')]"));
+        JavascriptExecutor jse= (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].scrollIntoView(true);",btn1);
+
+        ReusableMethods.bekle(5);
 
         //	- 1.alert'e tiklayin
-        driver.findElement(By.xpath("//*[@onclick='jsAlert()']"))
+        driver.findElement(By.xpath("//button[contains(text(),'JS Alert')]"))
                 .click();
 
         //	-  Alert'deki yazinin "I am a JS Alert" oldugunu test edin
@@ -56,7 +62,7 @@ public class C02_JsAlerts extends TestBase_Each {
 
     }
 
-    @Test
+    @Test @Order (2) @Disabled
     public void jsConfirmTest(){
         //2.Test
         //	- https://testotomasyonu.com/javascriptAlert adresine gidin
@@ -80,7 +86,7 @@ public class C02_JsAlerts extends TestBase_Each {
 
     }
 
-    @Test
+    @Test @Order(3) @Disabled
     public void jsPromptTest(){
         //3.Test
         //	- https://testotomasyonu.com/javascriptAlert adresine gidin

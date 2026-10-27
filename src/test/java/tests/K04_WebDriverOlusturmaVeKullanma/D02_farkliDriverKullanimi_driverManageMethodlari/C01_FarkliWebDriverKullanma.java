@@ -15,6 +15,13 @@ public class C01_FarkliWebDriverKullanma {
 
         driver.get("https://www.testotomasyonu.com");
 
+        driver.manage().window().fullscreen();
+        driver.manage().window().maximize();
+        driver.manage().window().minimize();
+
+
+
+
 
         Thread.sleep(2000);
         driver.quit();

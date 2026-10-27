@@ -20,7 +20,7 @@ public class C01_IlkOtomasyon {
          */
 
 
-        Thread.sleep(3000);
+        Thread.sleep(25000);
         driver.close();
 
     }

@@ -29,13 +29,13 @@ public class C01_DropdownMenu extends TestBase_Each {
         driver.get("https://the-internet.herokuapp.com/dropdown");
 
             // 1.adim dropdown menuyu locate edip kaydedelim
-        WebElement ddm = driver.findElement(By.id("dropdown"));
+        WebElement ddm = driver.findElement(By.xpath("//select[@id='dropdown']"));
             // 2.adim Select class'indan obje olusturup, parametre olarak ddm'yu girin
         Select select = new Select(ddm);
             // 3.adim olusturulan select objesi ile istenen islemleri yapin
 
         //1.Index kullanarak Seçenek 1’i (Option 1) seçin ve yazdırın
-        select.selectByIndex(1);
+        select.selectByVisibleText("Option 2");
 
         System.out.println(select.getFirstSelectedOption().getText()); // Option 1
 

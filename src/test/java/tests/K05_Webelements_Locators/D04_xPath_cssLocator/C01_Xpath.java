@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C01_Xpath {
+public class  C01_Xpath {
 
     public static void main(String[] args) throws InterruptedException {
 

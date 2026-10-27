@@ -8,19 +8,77 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class C03_Locators {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         driver.manage().window().maximize();
 
         //2-  https://www.testotomasyonu.com/ adresine gidin
         driver.get("https://www.testotomasyonu.com/");
 
+        ////span[@class='originalPrice']/../../a --indirimli ürün fiyatı ve adı
+        ////a[@class='page-link']
+        ////li[@class='has-sub']/a
+
+        List<WebElement> categories=new ArrayList<>();
+        List<WebElement> pages=new ArrayList<>();
+        List<String> products= new ArrayList<>();
+        List<String> specPrices= new ArrayList<>();
+        Map<String,String> proMap=new HashMap<>();
+        categories=driver.findElements(By.xpath("//li[@class='has-sub']/a"));
+        int page=0;
+
+        for (int i = 0; i < categories.size(); i++) {
+            categories=driver.findElements(By.xpath("//li[@class='has-sub']/a"));
+            categories.get(i).click();
+
+            pages=driver.findElements(By.xpath("//a[@class='page-link']"));
+
+            if (pages.size()==0) page=1;
+            else page=pages.size();
+
+            for (int j = 0; j < page; j++) {
+
+
+                if (j>0) {
+                    pages=driver.findElements(By.xpath("//a[@class='page-link']"));
+                    pages.get(j).click();
+                }
+                List<WebElement> indirimliUrun=new ArrayList<>();
+                indirimliUrun=driver.findElements(By.xpath("//span[@class='originalPrice']/../../a"));
+
+                for (int k = 0; k < indirimliUrun.size(); k++) {
+                    products.add(indirimliUrun.get(k).getText() );
+                }
+                List<WebElement> indirimliFiyat=new ArrayList<>();
+                indirimliFiyat=driver.findElements(By.xpath("//span[@class='originalPrice']"));
+
+                for (int l = 0; l < indirimliFiyat.size(); l++) {
+                    specPrices.add(indirimliFiyat.get(l).getText() );
+                }
+            }
+
+        }
+        for (int i = 0; i < products.size() ; i++) {
+
+            proMap.putIfAbsent(products.get(i),specPrices.get(i) );
+        }
+
+        System.out.println(proMap);
+
+
+        driver.quit();
+
+
+        /*
         //3-  Browseri tam sayfa yapin
         driver.manage().window().maximize();
 
@@ -52,7 +110,7 @@ public class C03_Locators {
             Actions actions = new Actions(driver);
             actions.sendKeys(Keys.PAGE_DOWN).perform();
 
-         */
+
 
         driver.findElement(By.xpath("(//a[text()='Furniture'])[3]"))
                 .click();
@@ -98,7 +156,7 @@ public class C03_Locators {
 
         //11-Sayfayi kapatin
         driver.quit();
-
+*/
 
     }
 }
